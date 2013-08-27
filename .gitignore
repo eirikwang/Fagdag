@@ -5,6 +5,8 @@
 *.war
 *.ear
 
+target
+
 # Intellij
 *.iml
 .idea
