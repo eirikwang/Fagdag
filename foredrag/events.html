@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Event drevet arkitektur</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <style type="text/css" media="screen">
+        @import url(http://fonts.googleapis.com/css?family=Droid+Serif);
+        @import url(http://fonts.googleapis.com/css?family=Yanone+Kaffeesatz);
+
+        body {
+          font-family: 'Droid Serif';
+          font-size: 20px;
+        }
+        h1, h2, h3 {
+          font-family: 'Yanone Kaffeesatz';
+          font-weight: 400;
+          margin-bottom: 0;
+        }
+        h1 { font-size: 4em; }
+        h2 { font-size: 2em; }
+        h3 { font-size: 1.6em; }
+        .footnote {
+          position: absolute;
+          bottom: 3em;
+        }
+
+    </style>
+  </head>
+  <body>
+    <textarea id="source">
+
+class: center, middle
+
+# Event drevet arkitektur
+## Eirik L. Wang
+## Bekk Fagdag - 30-08-2013
+
+
+---
+
+# Agenda
+
+1. Hva er event drevet arkitektur?
+2. Forklaring av komponenter
+3. Oppgave 1: Bruk av eventer internt i systemer
+4. Event drevet SOA - the hype
+5. Oppgave 2: Bruk av eventer på tvers av systemer
+6. Bus
+7. Oppgave 3: Hvordan lage meldings-busser
+8. Oppsumering
+
+
+---
+
+# Før vi starter
+
+##![](https://github.com/github/media/blob/master/octocats/blacktocat-32.png?raw=true)/eirikwang/Fagda
+
+
+* git clone git@github.com:eirikwang/Fagdag.git
+* git checkout steg1
+* mvn install
+
+---
+
+#Event
+    An event is an occurrence within a particular system or domain;
+    it is something that has happened, or is contemplated as having
+    happened in that domain. The word event is also used to mean a
+    programming entity that represents such an occurrence in a
+    computing system.
+
+.footnote.right[1) Event Processing in Action (Etzion & Niblett)]
+
+???
+### To meninger
+
+1. Event er noe som har hendt.
+2. Programatiske representasjonen av dette.
+
+Ut i fra context
+
+
+
+    </textarea>
+    <script src="http://gnab.github.io/remark/downloads/remark-0.5.3.min.js" type="text/javascript">
+    </script>
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+    <script type="text/javascript">
+      var slideshow = remark.create();
+    </script>
+  </body>
+</html>
