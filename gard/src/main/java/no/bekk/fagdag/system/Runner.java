@@ -23,7 +23,6 @@ public class Runner implements EventHandler {
         eventBus = new EventBus("Kusystem");
         registrerHandterere();
         lagKyr();
-        eventBus.post(new StartetEvent());
 
     }
 
@@ -50,6 +49,7 @@ public class Runner implements EventHandler {
     public static void main(String[] args) throws InterruptedException {
         Runner r = new Runner();
         r.addTicker();
+        r.postEvent(new StartetEvent());
         CountDownLatch l = new CountDownLatch(1);
         l.await();
     }
