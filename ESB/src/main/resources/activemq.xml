@@ -7,29 +7,43 @@
        http://activemq.apache.org/schema/core http://activemq.apache.org/schema/core/activemq-core.xsd
        http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
        http://camel.apache.org/schema/spring http://camel.apache.org/schema/spring/camel-spring.xsd">
- 
+
     <broker:broker id="broker" brokerName="myBroker" useShutdownHook="true" useJmx="false"
                    persistent="false" dataDirectory="activemq-data" start="true"
                    xmlns="http://activemq.apache.org/schema/core">
- 
+
         <broker:transportConnectors>
             <!-- vm transport for intra-jvm communication -->
             <broker:transportConnector name="vm" uri="vm://myBroker"/>
             <!-- tcp for external communication -->
             <broker:transportConnector name="tcp" uri="tcp://0.0.0.0:61616"/>
         </broker:transportConnectors>
- 
+        <systemUsage>
+            <systemUsage>
+                <memoryUsage>
+                    <memoryUsage limit="20 mb"/>
+                </memoryUsage>
+                <storeUsage>
+                    <storeUsage limit="1 gb"/>
+                </storeUsage>
+                <tempUsage>
+                    <tempUsage limit="100 mb"/>
+                </tempUsage>
+            </systemUsage>
+        </systemUsage>
+
     </broker:broker>
     <!-- Here we define Camel, notice the namespace it uses -->
-  <camel:camelContext xmlns="http://camel.apache.org/schema/spring">
-      <camel:packageScan>
-          <package>no.bekk.fagdag.routes</package>
-      </camel:packageScan>
-  </camel:camelContext>
+    <camel:camelContext xmlns="http://camel.apache.org/schema/spring">
+        <camel:packageScan>
+            <package>no.bekk.fagdag.routes</package>
+        </camel:packageScan>
+    </camel:camelContext>
 
     <bean id="activemq" class="org.apache.activemq.camel.component.ActiveMQComponent">
         <!-- vm://myBroker is the vm protocol, and myBroker is the broker name -->
         <property name="brokerURL" value="vm://myBroker?create=false&amp;waitForStart=5000"/>
     </bean>
- 
+
+
 </beans>

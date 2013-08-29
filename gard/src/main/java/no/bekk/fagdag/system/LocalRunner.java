@@ -16,10 +16,10 @@ import com.google.common.eventbus.EventBus;
 /**
  * @author Eirik Wang - eirik.wang@bekk.no
  */
-public class Runner implements EventHandler {
+public class LocalRunner implements EventHandler {
     private final EventBus eventBus;
 
-    public Runner() {
+    public LocalRunner() {
         eventBus = new EventBus("Kusystem");
         registrerHandterere();
         lagKyr();
@@ -38,6 +38,10 @@ public class Runner implements EventHandler {
         eventBus.register(new DagTicker(this));
     }
 
+    public void register(Object o) {
+        eventBus.register(o);
+    }
+
     private void lagKyr() {
         for (int i = 0; i < 10; i++) {
             Ku ku = new Ku(i, "navn " + i, i / 10, 5000 + (i * 1000 / 5));
@@ -47,7 +51,7 @@ public class Runner implements EventHandler {
     }
 
     public static void main(String[] args) throws InterruptedException {
-        Runner r = new Runner();
+        LocalRunner r = new LocalRunner();
         r.addTicker();
         r.postEvent(new StartetEvent());
         CountDownLatch l = new CountDownLatch(1);
@@ -55,6 +59,7 @@ public class Runner implements EventHandler {
     }
 
     public void postEvent(Object event) {
+        System.out.println("poster" + event);
         eventBus.post(event);
     }
 }

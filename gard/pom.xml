@@ -5,10 +5,9 @@
         >
     <modelVersion>4.0.0</modelVersion>
     <groupId>no.bekk.fagdag</groupId>
-    <artifactId>FagdagEvents</artifactId>
+    <artifactId>gard</artifactId>
     <packaging>war</packaging>
     <version>0.1-SNAPSHOT</version>
-    <name>Ku Lifecycle</name>
     <parent>
         <groupId>no.bekk.fagdag</groupId>
         <artifactId>events-base</artifactId>

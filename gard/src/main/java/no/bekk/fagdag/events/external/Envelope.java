@@ -1,5 +1,6 @@
 package no.bekk.fagdag.events.external;
 
+import no.bekk.fagdag.events.Event;
 import no.bekk.fagdag.events.rapport.DagsRapportEvent;
 import no.bekk.fagdag.events.system.NyDagEvent;
 
@@ -16,6 +17,16 @@ public class Envelope {
     public String id;
     public Long timestamp;
     public Object payload;
+
+    public Envelope() {
+    }
+
+    public Envelope(Event payload) {
+        this.payload = payload;
+        this.type = payload.getClass().getSimpleName();
+        this.id = payload.id.toString();
+        this.timestamp = payload.created;
+    }
 
     public Object getPayload() {
         return payload;

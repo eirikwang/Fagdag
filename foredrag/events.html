@@ -19,6 +19,13 @@
         h1 { font-size: 3em; padding-bottom: 50px;}
         h2 { font-size: 2em; }
         h3 { font-size: 1.6em; }
+        code {
+          -moz-border-radius: 5px;
+          -web-border-radius: 5px;
+          background: #e7e8e2;
+          border-radius: 5px;
+          font-size: 16px;
+        }
 
         .footnote {
           position: absolute;
@@ -344,8 +351,7 @@ Brukes i ActiveMQ
     Namespaces ns = new Namespaces("e", "http://bekk.no/fagdag/event");
     from("activemq:topic:messageRouter).filter()
         .xpath("/e:event/[type='RubberDuckEvent']")
-        .to("sysmteSomTarIMotRubberDuckEvent
-
+        .to("sysmteSomTarIMotRubberDuckEvent")
 ---
 #Eksempler
 ##Logge alle innkommende eventer til en log fil

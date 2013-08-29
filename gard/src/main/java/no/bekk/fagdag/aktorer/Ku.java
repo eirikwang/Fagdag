@@ -2,7 +2,7 @@ package no.bekk.fagdag.aktorer;
 
 import no.bekk.fagdag.events.bonde.MelketAlleKuer;
 import no.bekk.fagdag.events.ku.KuGaMelk;
-import no.bekk.fagdag.system.Runner;
+import no.bekk.fagdag.system.LocalRunner;
 
 import com.google.common.eventbus.Subscribe;
 
@@ -28,9 +28,9 @@ public class Ku {
         eventHandler.postEvent(new KuGaMelk(melketEvent.dag, id, 50));
     }
 
-    private transient Runner eventHandler;
+    private transient LocalRunner eventHandler;
 
-    public void setEventHandler(Runner eventHandler) {
+    public void setEventHandler(LocalRunner eventHandler) {
         this.eventHandler = eventHandler;
     }
 }

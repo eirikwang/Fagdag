@@ -10,6 +10,7 @@ import java.util.UUID;
 public abstract class Event {
     public final UUID id;
     public final long created;
+    public transient boolean incomming = false;
 
     protected Event(UUID id, long timestamp) {
         this.id = id;
