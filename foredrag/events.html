@@ -109,8 +109,15 @@ class: center, middle
 
 
 * git clone git@github.com:eirikwang/Fagdag.git
-* git checkout steg1
+
+* git checkout Steg1
 * mvn install
+
+evt:
+
+* git checkout master
+* tar -xvf libs.tar
+
 
 ---
 
@@ -123,15 +130,24 @@ class: center, middle
 
 
 ---
-#Hva er EDA?
 
-##Et system som bruker meldinger for kommunikasjon mellom komponenter
+.breakbig.center[
+##Et system som kommuniserer med meldinger
+]
 
 ???
 
 *The next big thing?
 *Gammel kunnskap i new wrapping?
 *Bredt emne - på høyde med database management etc.
+---
+.breakbig.center[
+##Asynkront
+
+##Løst koblet
+
+##"Enterprisy"
+]
 
 ---
 #RubberDuck - Verdens kuleste and
@@ -203,6 +219,11 @@ class: komponenter
 ##En produsent er et system, en fysisk komponent eller en fysisk handling som fører til en hendelse.
 ]
 ---
+#RubberDuck - Verdens kuleste and
+
+![text](flow.jpg)
+
+---
 
 #Produsenter i RubberDuck
 
@@ -226,7 +247,12 @@ Lager
 
 ---
 .center.breakbig[
-##En Konsument er et system som mottar et event]
+##En Konsument er et system som konsumerer et event]
+---
+#RubberDuck - Verdens kuleste and
+
+![text](flow.jpg)
+
 ---
 #Konsumenter i RubberDuck
 .break.center[
@@ -245,7 +271,7 @@ Lager
 ![Old McDonald](mcdonald.gif)
 ]
 ---
-#Oppgave1 -
+#Oppgave1
 ##Programmere flyten på en bondegård
 
 * For hver ny dag sendes det ut et nytt event .event[NyDagEvent]
@@ -258,7 +284,33 @@ Lager
 
 * For hver ny dag skal det rapporteres hvor mange liter melk alle kueene melket sist dag
 
-                                                                 ###
+---
+#McDonald Farm
+* Eventer
+  * Ny dag
+  * Melket kyr
+  * Ku ga melk
+  * .....
+* Produsenter
+  * Bonde
+  * Ku
+  * Melkesystem
+* Konsumenter
+  * Logger
+  * Ku
+  * Melkesystem
+
+---
+#Ekstra oppgaver
+
+* En ku gir ikke melk før den har kalvet
+* En ku føder ca 280 dager etter inseminering
+* En ku melker etter melkekurven i MilkUtil
+* En ku skal avsines (sluttes å melke) om den melker under 20l de siste 2 dager
+* En ku skal avsines etter 302 dager
+* En skal inseminere kua 280 dager etter sist kalving.
+* Kalving bestilles fra inseminør
+
 ---
 #Hvorfor bruke EDA?
 
@@ -279,6 +331,27 @@ Lager
 
 ---
 
+#Utvidbarhet
+
+Enkelt å hekte på nye komponenter
+
+Enkelt å bytte ut systemer
+
+Enkelt å teste
+
+Enkelt å koble på andre deler i bedriften (BI, BPM, NSM etc)
+
+---
+#Skalerbarhet
+
+Flere konsumenter
+
+Flere produsenter
+
+
+
+---
+
 .center.breakbig[
 ##Løst koblet Event-System]
 ???
@@ -287,11 +360,34 @@ Konsumenter og produsenter vet ikke om hverandre.
 ---
 
 .center.breakbig[
-##Løst koblete systemer gir nye problemer]
+##Asynkrone systemer gir nye problemer]
 
 ???
 
 F.eks krat om at meldinger må komme frem
+Hva med notifikasjoner?
+---
+
+#Utfordringer
+
+* Transaksjoner
+
+* Sikkerhet
+
+* Sikre at meldinger kommer frem
+
+...
+
+---
+
+.center.breakbig[
+![paintdry](paintdry.jpg)
+]
+---
+
+.center.breakbig[
+##WS-*]
+
 ---
 
 .center.breakbig[
@@ -370,8 +466,52 @@ Brukes i ActiveMQ
 
 ---
 #Oppgave 2
-##Koble systemet sammen med event-bussen
+##Event-bus
+* Bussen skal detektere at tanken begynner å bli full
 
+* Systemet skal bestille tankbil når dette detekteres
+
+* Systemet skal Håndtere at tankbilen kommer
+
+* En ekstern database skal lagre hvor mye alle kuer melker hver dag
+  * Kritisk at alle meldinger blir lagret
+
+---
+#Camel Tips
+
+En kan filtrere meldinger ved filter() funksjonen.
+
+Transformering gjøres ved transform()
+
+
+---
+#Ekstraoppgave
+
+* Det skal legges til en alarm om bonden ikke melker i løpet av en dag.
+
+* All melk en ku gir fra seg skal testes før den går i tanken.
+  * Skal da sendes ut en ny melding om dette.
+
+* Om en ku tester positivt mer enn 3 ganger i løpet av en uke skal det gis en alarm
+
+---
+
+
+#Oppsumert
+
+* Event-baserte systemer virker
+
+* Ikke egnet for databasesentriske løsninger
+
+* Egner seg for løst koblete systemer
+
+* Trenger gode verktøy for å monitorere hvor en eventkjede befinner seg
+
+---
+
+.center.breakbig[
+##Takk for meg
+]
 
 ---
     </textarea>
