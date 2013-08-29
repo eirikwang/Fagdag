@@ -42,7 +42,6 @@ public class JmsConnectRouteBuilder extends RouteBuilder {
                         exchange.getIn().getBody(Event.class).incomming=true;
                     }
                 })
-                .log("${body}")
                 .bean(eventHandler, "postEvent");
         from("direct:send").id("sender").marshal(getxStreamDataFormat()).to("activemq:topic:messageBroker");
         template = new DefaultProducerTemplate(getContext(), getContext().getEndpoint("direct:send"));
